@@ -2,10 +2,11 @@
 #include <vector>
 using namespace std;
 
-int linearSearch(vector<int> arr, int start, int end, int key)
+int linearSearch(vector<int> arr, int start, int end, int key, int &comparisions)
 {
     for (int i = start; i <= end; i++)
     {
+        comparisions++;
         if (arr[i] == key)
         {
             return i;
@@ -14,21 +15,26 @@ int linearSearch(vector<int> arr, int start, int end, int key)
     return -1;
 }
 
-int expoSearch(vector<int> arr, int n, int key)
+void expoSearch(vector<int> arr, int n, int key)
 {
-    int i = 1;
+    int i = 1, comparisions=0;
     if (arr[0] == key)
     {
-        return 0;
+        return;
     }
 
     while (i < n && arr[i] <= key)
     {
+        comparisions++;
         i *= 2;
     }
-
-    return linearSearch(arr, i / 2, max(i, n - 1), key);
+    int ans = linearSearch(arr, i / 2, max(i, n - 1), key, comparisions);
+    if(ans>=0)
+        cout<<"Present "<<comparisions<<endl;
+    else
+        cout<<"Not present "<<endl;
 }
+
 int main()
 {
     int testcases, temp, ans, key;
@@ -44,7 +50,6 @@ int main()
             arr.push_back(temp);
         }
         cin >> key;
-        ans = expoSearch(arr, n, key);
-        cout << ans << endl;
+        expoSearch(arr, n, key);
     }
 }

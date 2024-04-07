@@ -1,7 +1,6 @@
 {
     "files.associations": {
         "*.c": "c",
-        "unordered_map": "cpp",
-        "vector": "cpp"
+        "unordered_map": "cpp"
     }
 }
