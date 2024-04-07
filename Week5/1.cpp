@@ -1,7 +1,7 @@
 /*
 Given an unsorted array of alphabets containing duplicate elements. Design an algorithm
 and implement it using a program to find which alphabet has maximum number of
-occurrences andprint it. (Time Complexity = O(n)) (Hint: Use counting sort)
+occurrences and print it. (Time Complexity = O(n)) (Hint: Use counting sort)
 */
 
 #include <iostream>
@@ -9,33 +9,26 @@ occurrences andprint it. (Time Complexity = O(n)) (Hint: Use counting sort)
 #include <map>
 using namespace std;
 
-void findDuplicate(vector<char> arr)
+void countingSort(vector<char>&arr)
 {
-    map<char, int> m;
-    for (char val : arr)
+    vector<int>count(26,0);
+    for(int i=0; i<arr.size(); i++)
     {
-        m[val]++;
+        count[arr[i]-'a']++;
     }
 
-    int max = 0;
-    char maxel;
-    for (auto &it : m)
+    int maxCount = 0;
+    char maxChar = 'a';
+    for(int i=0; i<count.size(); i++)
     {
-        if (it.second > 1 && it.second > max)
+        if(count[i]>maxCount)
         {
-            maxel = it.first;
-            max = it.second;
+            maxCount = count[i];
+            maxChar = 'a'+i;
         }
     }
-    if (max == 0)
-    {
-        cout << "No duplicate element found" << endl;
-    }
-    else
-    {
-        cout << maxel << "-" << max << endl;
-    }
-    return;
+
+    cout<<maxChar;
 }
 
 int main()
@@ -53,6 +46,6 @@ int main()
             cin >> temp;
             arr.push_back(temp);
         }
-        findDuplicate(arr);
+        countingSort(arr);
     }
 }
