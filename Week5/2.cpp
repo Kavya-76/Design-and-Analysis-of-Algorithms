@@ -1,9 +1,3 @@
-/*
-Given an unsorted array of integers, design an algorithm and implement it using a
-program to find whether two elements exist such that their sum is equal to the given
-key element. (Time Complexity = O(n log n))
-*/
-
 #include <iostream>
 #include <unordered_map>
 #include <vector>
@@ -24,6 +18,7 @@ void twoSum(vector<int> arr, int key)
     }
     cout << "No such elements exist" << endl;
 }
+
 int main()
 {
     int testcases;

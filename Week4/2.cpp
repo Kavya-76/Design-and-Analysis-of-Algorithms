@@ -1,31 +1,33 @@
 #include <iostream>
 #include <vector>
 using namespace std;
-
-int partition(vector<int>&arr, int low, int high)
-{   
-    int pivot = arr[high];
-    int i=low-1;
-    int j=low;
+int partition(vector<int>&nums, int low, int high, int &comparisions, int &swaps)
+{
+    int pivot = nums[high];
+    int i = low-1;
+    int j = low;
     for(int j=low; j<high; j++)
     {
-        if(arr[j]<=pivot)
+        comparisions++;
+        if(nums[j]<=pivot)
         {
             i++;
-            swap(arr[i], arr[j]);
+            swap(nums[i], nums[j]);
+            swaps++;
         }
     }
-    swap(arr[i+1], arr[high]);
+    swap(nums[i+1], nums[high]);
+    swaps++;
     return i+1;
 }
 
-void quickSort(vector<int>&arr, int low, int high)
+void quickSort(vector<int>&arr, int low, int high, int &comparisions, int &swaps)
 {
     if(low<high)
     {
-        int partitionIndex = partition(arr, low, high);
-        quickSort(arr, low, partitionIndex-1);
-        quickSort(arr, partitionIndex+1, high);
+        int partitionIndex = partition(arr, low, high, comparisions, swaps);
+        quickSort(arr, low, partitionIndex-1, comparisions, swaps);
+        quickSort(arr, partitionIndex+1, high, comparisions, swaps);
     }
 }
 
@@ -40,7 +42,7 @@ void printArray(vector<int>arr)
 
 int main()
 {
-    int testcases;
+    int testcases, comparisions=0, swaps=0;
     cin >> testcases;
 
     for (int i = 0; i < testcases; i++)
@@ -53,7 +55,11 @@ int main()
             cin >> temp;
             arr.push_back(temp);
         }
-        quickSort(arr, 0, n-1);
+        quickSort(arr, 0, n-1, comparisions, swaps);
+
+        cout<<"Array after sorting: ";
         printArray(arr);
+        cout<<"Comparisions: "<<comparisions<<endl;
+        cout<<"Swaps: "<<swaps<<endl;
     }
 }

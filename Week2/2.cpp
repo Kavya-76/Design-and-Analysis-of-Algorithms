@@ -6,15 +6,15 @@ using namespace std;
 void threeSum(vector<int> arr)
 {
   int n = arr.size();
-  for (int i = n-1; i >=2; i--)
+  for (int i = n - 1; i >= 2; i--)
   {
     int l = 0;
-    int r = i-1;
+    int r = i - 1;
     while (l < r)
     {
       if (arr[l] + arr[r] == arr[i])
       {
-        cout << l+1 << " " << r+1 << " " << i+1 << endl;
+        cout << l + 1 << " " << r + 1 << " " << i + 1 << endl;
         return;
       }
 
@@ -29,7 +29,7 @@ void threeSum(vector<int> arr)
       }
     }
   }
-  cout<<"No sequence found"<<endl;
+  cout << "No sequence found" << endl;
 }
 
 int main()

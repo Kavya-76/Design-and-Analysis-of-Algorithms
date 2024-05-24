@@ -2,7 +2,7 @@
 #include <vector>
 using namespace std;
 
-void merge(vector<int>&arr, int low, int mid, int high)
+void merge(vector<int>&arr, int low, int mid, int high, int &comparisions, int &inversions)
 {
     int n = arr.size();
     int i=low;
@@ -11,7 +11,8 @@ void merge(vector<int>&arr, int low, int mid, int high)
     vector<int>temp(n);
     while(i<=mid && j<=high)
     {
-        if(arr[i]<arr[j])
+        comparisions++;
+        if(arr[i]<=arr[j])
         {
             temp[k]=arr[i];
             k++;
@@ -23,6 +24,7 @@ void merge(vector<int>&arr, int low, int mid, int high)
             temp[k]=arr[j];
             k++;
             j++;
+            inversions+=mid-i;
         }
     }
 
@@ -46,14 +48,14 @@ void merge(vector<int>&arr, int low, int mid, int high)
     }
 }
 
-void mergeSort(vector<int>&arr, int low, int high)
+void mergeSort(vector<int>&arr, int low, int high, int &comparisions, int &inversions)
 {
     if(low<high)
     {
         int mid = (low+high)/2;
-        mergeSort(arr, low, mid);
-        mergeSort(arr, mid+1, high);
-        merge(arr, low, mid, high);
+        mergeSort(arr, low, mid, comparisions, inversions);
+        mergeSort(arr, mid+1, high, comparisions, inversions);
+        merge(arr, low, mid, high, comparisions, inversions);
     }
 }
 
@@ -68,7 +70,7 @@ void printArray(vector<int>arr)
 
 int main()
 {
-    int testcases;
+    int testcases, comparisions=0, inversions=0;
     cin >> testcases;
 
     for (int i = 0; i < testcases; i++)
@@ -81,7 +83,10 @@ int main()
             cin >> temp;
             arr.push_back(temp);
         }
-        mergeSort(arr, 0, n-1);
+        mergeSort(arr, 0, n-1, comparisions, inversions);
+        cout<<"Array after sorting: ";
         printArray(arr);
+        cout<<"Comparisions: "<<comparisions<<endl;
+        cout<<"Inversions: "<<inversions<<endl;
     }
 }

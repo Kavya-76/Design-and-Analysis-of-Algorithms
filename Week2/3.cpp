@@ -3,19 +3,33 @@
 #include <algorithm>
 using namespace std;
 
-void solve(vector<int>arr, int key)
+int solve(vector<int>arr, int key)
 {
     int count=0;
+    int n = arr.size();
+    int i=0, j=1;
     sort(begin(arr), end(arr));
-    int i=0; 
-    int j=arr.size()-1;
-    while(i<j)
+
+    while(i<n && j<n)
     {
         if(arr[j]-arr[i]==key)
         {
             count++;
+            i++;
+            j++;
+        }
+
+        else if(arr[j]-arr[i]>key)
+        {
+          i++;
+        }
+
+        else
+        {
+          j++;
         }
     }
+    return count;
 }
 
 int main()
@@ -34,6 +48,7 @@ int main()
       arr.push_back(temp);
     }
     cin>>key;
-    solve(arr,key);
+    int ans = solve(arr,key);
+    cout<<"Number of Pairs: "<<ans<<endl;
   }
 }
