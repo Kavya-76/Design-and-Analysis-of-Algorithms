@@ -8,8 +8,9 @@ to find if a graph is bipartite or not. (Hint: use BFS) .
 #include <queue>
 using namespace std;
 
-bool isBipartite(int src, vector<int>&colors, vector<vector<int>>&adj)
+bool isBipartite(int src, vector<vector<int>>&adj, int n)
 {
+    vector<int>colors(n, 0);
     queue<int>q;
     colors[src] = 1;
     q.push(src);
@@ -17,9 +18,9 @@ bool isBipartite(int src, vector<int>&colors, vector<vector<int>>&adj)
     {
         int node = q.front();
         q.pop();
-        for(int i: colors)
+        for(int i=0; i<n; i++)
         {
-            if(adj[src][i]==1)
+            if(adj[node][i]==1)
             {
                 if(colors[i]==0){
                     q.push(i);
@@ -27,7 +28,9 @@ bool isBipartite(int src, vector<int>&colors, vector<vector<int>>&adj)
                 }
 
                 else if(colors[i]==colors[node])
+                {
                     return false;
+                }
             }
         }
     }
@@ -49,17 +52,10 @@ int main()
         }
     }
 
-    vector<int>colors(n, 0);
-    for(int i=0; i<n; i++)
-    {
-        if(colors[i]==0)
-        {
-            if(!isBipartite(i, colors, adj))
-            {
-                cout<<"Graph is not Bipartite"<<endl;
-            }
-            return 0; 
-        }
+    if(isBipartite(0, adj, n)){
+        cout<<"Graph is Bipartite"<<endl;
     }
-    cout<<"Graph is Bipartite"<<endl;
+    else{
+        cout<<"Graph is not Bipartite"<<endl;
+    }
 }

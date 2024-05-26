@@ -49,22 +49,26 @@ int kthLargest(vector<int>& nums, int low, int high, int k) {
 int main() {
 
     int testcases;
+    cout<<"Enter number of testcases: ";
     cin >> testcases;
 
     for (int i = 0; i < testcases; i++)
     {
         vector<int> nums;
         int n, temp, k;
+        cout<<"Enter number of elements: ";
         cin >> n;
+        cout<<"Enter the elements: ";
         for (int j = 0; j < n; j++)
         {
             cin >> temp;
             nums.push_back(temp);
         }
         
+        cout<<"Enter value of K: ";
         cin>>k;
         int result = kthSmallest(nums, 0, nums.size() - 1, k);
-        int result2 = kthLargest(nums, 0, nums.size()-1, 2);
+        int result2 = kthLargest(nums, 0, nums.size()-1, k);
         if (result != -1 && result2!=-1)
         {
             cout << "K'th smallest element is " << result << endl;

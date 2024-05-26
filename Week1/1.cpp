@@ -1,3 +1,10 @@
+/*
+Q1 :- Given an array of nonnegative integers, design a linear algorithm and 
+implement it using a program to find whether given key element is present in 
+the array or not. Also, find total number of comparisons for each input case. 
+(Time Complexity = O(n), where n is the size of input).
+*/
+
 #include <iostream>
 #include <vector>
 using namespace std;
@@ -25,17 +32,21 @@ int main()
 {
   int testcases, size, key, value;
   vector<int> arr;
+  cout<<"Enter number of testcases: ";
   cin >> testcases;
 
   for (int i = 0; i < testcases; i++)
   {
+    cout<<"Enter number of elements: ";
     cin >> size;
+
+    cout<<"Enter the elements: ";
     for (int j = 0; j < size; j++)
     {
       cin >> value;
       arr.push_back(value);
     }
-
+    cout<<"Enter key: ";
     cin >> key;
     linear_search(arr, size, key);
   }

@@ -43,13 +43,16 @@ void printArray(vector<int>arr)
 int main()
 {
     int testcases, comparisions=0, swaps=0;
+    cout<<"Enter number of testcases: ";
     cin >> testcases;
 
     for (int i = 0; i < testcases; i++)
     {
         vector<int> arr;
         int n, temp;
+        cout<<"Enter number of elements: ";
         cin >> n;
+        cout<<"Enter the elements: ";
         for (int j = 0; j < n; j++)
         {
             cin >> temp;

@@ -28,19 +28,20 @@ void insertionSort(vector<int> &arr, int n, int &comparisions, int &shifts)
         arr[j + 1] = key;
         shifts++;
     }
-    cout << "Comparisions: " << comparisions << endl;
-    cout << "Shifts: " << shifts << endl;
 }
 
 int main()
 {
     int testcases, comparisions=0, shifts=0;
+    cout<<"Enter number of testcases: ";
     cin >> testcases;
     for (int i = 0; i < testcases; i++)
     {
         int n;
+        cout<<"Enter number of elements: ";
         cin >> n;
         vector<int> arr;
+        cout<<"Enter the elements: ";
         for (int j = 0; j < n; j++)
         {
             int temp;

@@ -37,19 +37,24 @@ vector<int>commonElements(vector<int>arr1, vector<int>arr2, int m, int n)
 int main()
 {
     int testcases;
+    cout<<"Enter number of testcases: ";
     cin>>testcases;
     vector<int>arr1, arr2;
     for(int i=0; i<testcases; i++)
     {
         int m, n, temp;
+        cout<<"Enter number of elements in Ist array: ";
         cin>>m;
+        cout<<"Enter the elements of Ist array: ";
         for(int j=0; j<m; j++)
         {
             cin>>temp;
             arr1.push_back(temp);
         }
 
+        cout<<"Enter number of elements in IInd array: ";
         cin>>n;
+        cout<<"Enter the elements of IInd array: ";
         for(int j=0; j<n; j++)
         {
             cin>>temp;
@@ -58,6 +63,13 @@ int main()
 
         vector<int>ans;
         ans = commonElements(arr1, arr2, m, n);
+
+        if(ans.size()==0)
+        {
+            cout<<"No common elements"<<endl;
+            return 0;
+        }
+        cout<<"Common Elements: ";
         printArray(ans);
     }
     return 0;

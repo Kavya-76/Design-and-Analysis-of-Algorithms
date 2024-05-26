@@ -8,7 +8,7 @@ vertices or not. (Hint: use DFS)
 #include <vector>
 using namespace std;
 
-bool checkPath(vector<vector<int>>&adj, int src, int des, vector<int>&visited)
+bool checkPath(vector<vector<int>>&adj, int src, int des, vector<int>&visited, int n)
 {
     if(src==des)
     {
@@ -16,11 +16,11 @@ bool checkPath(vector<vector<int>>&adj, int src, int des, vector<int>&visited)
     }
 
     visited[src] = 1;
-    for(int node: adj[src])
+    for(int i=0; i<n; i++)
     {
-        if(adj[src][node]==1 && !visited[node])
+        if(adj[src][i]==1 && !visited[i])
         {
-            if(checkPath(adj, node, des, visited))
+            if(checkPath(adj, i, des, visited, n))
             {
                 return true;
             }
@@ -50,7 +50,7 @@ int main()
     cin>>destination;
 
     vector<int>visited(n, 0);
-    if(checkPath(adj, source, destination, visited))
+    if(checkPath(adj, source, destination, visited, n))
     {
         cout<<"Yes path exists"<<endl;
     }

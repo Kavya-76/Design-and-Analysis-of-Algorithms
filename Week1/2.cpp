@@ -34,15 +34,20 @@ int main()
 {
     vector<int> arr;
     int testcases, size, key, temp;
+    cout<<"Enter number of testcases: ";
     cin >> testcases;
     for (int i = 0; i < testcases; i++)
     {
+        cout<<"Enter number of elements: ";
         cin >> size;
+
+        cout<<"Enter the elements: ";
         for (int j = 0; j < size; j++)
         {
             cin >> temp;
             arr.push_back(temp);
         }
+        cout<<"Enter key: ";
         cin >> key;
         binary(arr, size, key);
     }

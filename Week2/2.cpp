@@ -36,11 +36,14 @@ int main()
 {
   int testcases;
   vector<int> arr;
+  cout<<"Enter number of testcases: ";
   cin >> testcases;
   for (int i = 0; i < testcases; i++)
   {
+    cout<<"Enter number of elements: ";
     int n;
     cin >> n;
+    cout<<"Enter the elements: ";
     for (int j = 0; j < n; j++)
     {
       int temp;

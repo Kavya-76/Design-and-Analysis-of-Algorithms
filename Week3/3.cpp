@@ -54,12 +54,15 @@ bool isDuplicate(vector<int> &arr)
 int main()
 {
     int testcases;
+    cout<<"Enter number of testcases: ";
     cin >> testcases;
     for (int i = 0; i < testcases; i++)
     {
         vector<int> arr;
         int n;
+        cout<<"Enter number of elements: ";
         cin >> n;
+        cout<<"Enter the elements: ";
         for (int j = 0; j < n; j++)
         {
             int x;

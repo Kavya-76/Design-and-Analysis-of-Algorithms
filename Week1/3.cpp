@@ -39,16 +39,20 @@ int main()
 {
     int testcases, temp, ans, key;
     vector<int> arr;
+    cout<<"Enter number of testcases: ";
     cin >> testcases;
     for (int i = 0; i < testcases; i++)
     {
         int n;
+        cout<<"Enter number of elements: ";
         cin >> n;
+        cout<<"Enter the elements: ";
         for (int i = 0; i < n; i++)
         {
             cin >> temp;
             arr.push_back(temp);
         }
+        cout<<"Enter key: ";
         cin >> key;
         expoSearch(arr, n, key);
     }
